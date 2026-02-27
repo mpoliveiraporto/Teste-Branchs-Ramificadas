@@ -1,5 +1,5 @@
 /* ==========================
-   RESET BÁSICO
+   RESET
 ========================== */
 * {
   margin: 0;
@@ -8,97 +8,137 @@
 }
 
 /* ==========================
-   CONFIGURAÇÕES GLOBAIS
+   VARIÁVEIS
 ========================== */
-html {
-  font-size: 16px;
-  scroll-behavior: smooth;
+:root {
+  --primary: #7f5af0;
+  --secondary: #2cb67d;
+  --dark: #16161a;
+  --light: #fffffe;
+  --glass: rgba(255, 255, 255, 0.1);
 }
 
+/* ==========================
+   FUNDO ARTÍSTICO
+========================== */
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #16161a, #1f1f3a, #2a2a72);
+  background-size: 300% 300%;
+  animation: gradientMove 15s ease infinite;
+  color: var(--light);
+  min-height: 100vh;
   line-height: 1.6;
-  background-color: #f4f4f4;
-  color: #333;
-  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animação do fundo */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* ==========================
    TIPOGRAFIA
 ========================== */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 1rem;
-  font-weight: 600;
-  line-height: 1.2;
 }
 
 p {
+  opacity: 0.9;
   margin-bottom: 1rem;
 }
 
+/* ==========================
+   LINKS
+========================== */
 a {
+  color: var(--secondary);
   text-decoration: none;
-  color: inherit;
-  transition: color 0.3s ease;
+  position: relative;
+  transition: 0.3s ease;
 }
 
-a:hover {
-  color: #007bff;
+a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: var(--primary);
+  transition: 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
 }
 
 /* ==========================
-   LISTAS
+   CONTAINER ESTILO GLASS
 ========================== */
-ul, ol {
-  list-style: none;
-}
-
-/* ==========================
-   IMAGENS
-========================== */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: var(--glass);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 /* ==========================
    BOTÕES
 ========================== */
 button {
-  cursor: pointer;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
   border: none;
-  outline: none;
-  background: none;
-  font: inherit;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
 /* ==========================
-   FORMULÁRIOS
+   CARDS
 ========================== */
-input,
-textarea,
-select {
-  font: inherit;
-  outline: none;
+.card {
+  padding: 1.5rem;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: 0.4s ease;
+  margin-bottom: 1.5rem;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* ==========================
-   CONTAINER PADRÃO
+   RODAPÉ
 ========================== */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* ==========================
-   UTILITÁRIOS
-========================== */
-.text-center {
+footer {
   text-align: center;
-}
-
-.hidden {
-  display: none;
+  padding: 2rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-top: auto;
 }
